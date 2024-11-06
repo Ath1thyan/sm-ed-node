@@ -25,15 +25,21 @@ const ServiceRoutes = require("./routes/ServicePageRoutes")(ServiceControllers);
 const FooterRoutes = require('./routes/FooterRoutes')(FooterControllers);
 
 const app = express();
+
+app.use(express.json());
+
 const allowedOrigins = [
   'https://admin.smeduconsultant.com',
-  'https://api.smeduconsultant.com',
-  'https://smeduconsultant.com', // add any other domains as needed
+  'https://smeduconsultant.com', 
+  // 'http://localhost:5173',
+  // 'http://127.0.0.1:5173',
+  // 'http://127.0.0.1:5174',
 ];
 
 app.use(
   cors({
     origin: (origin, callback) => {
+      console.log("Request Origin: ", origin);  // Log the origin
       // Allow requests with no origin (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) {
@@ -46,7 +52,6 @@ app.use(
   })
 );
 
-app.use(express.json());
 
 // MongoDB Connection
 mongoose
@@ -135,5 +140,5 @@ app.delete("/api/dataArray/:id", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5005;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,45 +1,27 @@
-const express = require("express");
+const express = require('express');
 
 module.exports = (controllers) => {
-  const router = express.Router();
+    const router = express.Router();
 
-  // Footer Logo Routes
-  router.post(
-    "/logo",
-    controllers.upload.single("image"),
-    controllers.createFooterLogo
-  );
-  router.get("/logo", controllers.getFooterLogo);
-  router.put(
-    "/logo",
-    controllers.upload.single("image"),
-    controllers.updateFooterLogo
-  );
-  router.delete("/logo", controllers.deleteFooterLogo);
+    router.post('/footerHero', controllers.createFooterHero);
+    router.get('/footerHero', controllers.getFooterHero);
+    router.put('/footerHero', controllers.updateFooterHero);
+    router.delete('/footerHero', controllers.deleteFooterHero);
 
-  // Footer Title Routes
-  router.post("/title", controllers.createFooterTitle);
-  router.get("/title", controllers.getFooterTitle);
-  router.put("/title/:id", controllers.updateFooterTitle);
-  router.delete("/title/:id", controllers.deleteFooterTitle);
+    router.post('/contactInfo', controllers.createContactInfo);
+    router.get('/contactInfo', controllers.getContactInfo);
+    router.put('/contactInfo', controllers.updateContactInfo);
+    router.delete('/contactInfo', controllers.deleteContactInfo);
 
-  // Footer Quick Links Routes
-  router.post("/links", controllers.createFooterLink);
-  router.get("/links", controllers.getFooterLinks);
-  router.put("/links/:id", controllers.updateFooterLink);
-  router.delete("/links/:id", controllers.deleteFooterLink);
+    router.post('/links', controllers.createLinks);
+    router.get('/links', controllers.getLinks);
+    router.put('/links/:id', controllers.updateLinks);
+    router.delete('/links/:id', controllers.deleteLinks);
 
-  // Footer Connect Links Routes
-  router.post("/connect-links", controllers.createFooterConnectLink);
-  router.get("/connect-links", controllers.getFooterConnectLinks);
-  router.put("/connect-links/:id", controllers.updateFooterConnectLink);
-  router.delete("/connect-links/:id", controllers.deleteFooterConnectLink);
+    router.post('/smlinks', controllers.createSMLinks);
+    router.get('/smlinks', controllers.getSMLinks);
+    router.put('/smlinks/:id', controllers.updateSMLinks);
+    router.delete('/smlinks/:id', controllers.deleteSMLinks);
 
-  // Footer Contact Routes
-  router.post("/contact", controllers.createFooterContact);
-  router.get("/contact", controllers.getFooterContacts);
-  router.put("/contact/:id", controllers.updateFooterContact);
-  router.delete("/contact/:id", controllers.deleteFooterContact);
-
-  return router;
+    return router;
 };

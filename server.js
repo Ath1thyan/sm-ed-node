@@ -12,7 +12,7 @@ const ContactControllers = require("./controllers/ContactPageControllers");
 const TeamControllers = require("./controllers/TeamPageControllers");
 const NewsControllers = require("./controllers/NewsPageControllers");
 const ServiceControllers = require("./controllers/ServicePageControllers");
-const FooterControllers = require("./controllers/FooterControllers");
+const FooterControllers = require('./controllers/FooterControllers');
 
 const Homeroutes = require("./routes/HomePageRoutes")(controllers);
 const AboutUsRoutes = require("./routes/AboutUsPageRoutes")(AboutUsControllers);
@@ -22,7 +22,7 @@ const ContactRoutes = require("./routes/ContactPageRoutes")(ContactControllers);
 const TeamRoutes = require("./routes/TeamPageRoutes")(TeamControllers);
 const NewsRoutes = require("./routes/NewsPageRoutes")(NewsControllers);
 const ServiceRoutes = require("./routes/ServicePageRoutes")(ServiceControllers);
-const FooterRoutes = require("./routes/FooterRoutes")(FooterControllers);
+const FooterRoutes = require('./routes/FooterRoutes')(FooterControllers);
 
 const app = express();
 const allowedOrigins = [
@@ -76,7 +76,7 @@ app.use("/api", ContactRoutes);
 app.use("/api", TeamRoutes);
 app.use("/api", NewsRoutes);
 app.use("/api", ServiceRoutes);
-app.use("/api/footer", FooterRoutes);
+app.use('/api', FooterRoutes);
 
 const dataArraySchema = new mongoose.Schema({
   title1: String,

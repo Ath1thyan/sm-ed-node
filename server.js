@@ -14,7 +14,7 @@ const NewsControllers = require("./controllers/NewsPageControllers");
 const ServiceControllers = require("./controllers/ServicePageControllers");
 const FooterControllers = require("./controllers/FooterControllers");
 
-const routes = require("./routes/HomePageRoutes")(controllers);
+const Homeroutes = require("./routes/HomePageRoutes")(controllers);
 const AboutUsRoutes = require("./routes/AboutUsPageRoutes")(AboutUsControllers);
 const AuditRoutes = require("./routes/AuditPageRoutes")(AuditControllers);
 const LayoutRoutes = require("./routes/LayoutPageRoutes")(LayoutControllers);
@@ -48,7 +48,7 @@ app.get("/api/test", (req, res) => {
   });
 });
 
-app.use("/api", routes);
+app.use("/api", Homeroutes);
 app.use("/api", AboutUsRoutes);
 app.use("/api", AuditRoutes);
 app.use("/api", LayoutRoutes);

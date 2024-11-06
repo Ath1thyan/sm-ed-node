@@ -25,7 +25,27 @@ const ServiceRoutes = require("./routes/ServicePageRoutes")(ServiceControllers);
 const FooterRoutes = require("./routes/FooterRoutes")(FooterControllers);
 
 const app = express();
-app.use(cors());
+const allowedOrigins = [
+  'https://admin.smeduconsultant.com',
+  'https://api.smeduconsultant.com',
+  'https://smeduconsultant.com', // add any other domains as needed
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true, // if you're using cookies or authentication headers
+  })
+);
+
 app.use(express.json());
 
 // MongoDB Connection

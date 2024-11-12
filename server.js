@@ -31,7 +31,7 @@ app.use(express.json());
 const allowedOrigins = [
   'https://admin.smeduconsultant.com',
   'https://smeduconsultant.com', 
-  // 'http://localhost:5173',
+  'http://localhost:5173',
   // 'http://127.0.0.1:5173',
   // 'http://127.0.0.1:5174',
 ];

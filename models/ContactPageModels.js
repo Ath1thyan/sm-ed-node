@@ -15,7 +15,7 @@ const contactSchema = new mongoose.Schema({
   message: String,
 });
 
-const ContactDet = mongoose.model('FooterHero', contactDetSchema);
+const ContactDet = mongoose.model('ContactDet', contactDetSchema);
 const Contact = mongoose.model('Contact', contactSchema);
 
 module.exports = { Contact, ContactDet };

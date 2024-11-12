@@ -21,9 +21,10 @@ const footerSMLinksSchema = new mongoose.Schema({
     linkAddress: String,
 });
 
-const FooterLinks = mongoose.model('FooterLinks', footerLinksSchema);
-const FooterSMLinks = mongoose.model('FooterSMLinks', footerSMLinksSchema);
-const FooterHero = mongoose.model('FooterHero', footerHeroSchema);
-const FooterContactInfo = mongoose.model('FooterContactInfo', footerContactInfoSchema);
+// Use `mongoose.models` to check if the model already exists
+const FooterLinks = mongoose.models.FooterLinks || mongoose.model('FooterLinks', footerLinksSchema);
+const FooterSMLinks = mongoose.models.FooterSMLinks || mongoose.model('FooterSMLinks', footerSMLinksSchema);
+const FooterHero = mongoose.models.FooterHero || mongoose.model('FooterHero', footerHeroSchema);
+const FooterContactInfo = mongoose.models.FooterContactInfo || mongoose.model('FooterContactInfo', footerContactInfoSchema);
 
 module.exports = { FooterHero, FooterContactInfo, FooterLinks, FooterSMLinks };
